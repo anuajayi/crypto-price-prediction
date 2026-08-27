@@ -27,8 +27,7 @@
 # don't, so each series is forward-filled across non-trading days onto a
 # full daily calendar, then both its level and daily return are lagged by
 # 1 day before merging into each coin's feature set -- ensuring only
-# already-observed macro information is used (avoids look-ahead bias from
-# markets that close at different times/timezones than crypto's daily bar).
+# already-observed macro information is used.
 #############################################################################
 
 # ---------------------------------------------------------------------------
@@ -123,8 +122,7 @@ prepare_macro_series <- function(sym, out_name, full_calendar) {
     return(out)
   }
   merged <- dplyr::left_join(full_calendar, raw, by = "Date")
-  # Forward-fill across weekends/holidays (macro market closed that day);
-  # back-fill any leading gap before the macro series' first trading day.
+  # Forward-fill across weekends/holidays (macro market closed that day); back-fill any leading gap before the macro series' first trading day.
   merged$Close <- zoo::na.locf(merged$Close, na.rm = FALSE)
   merged$Close <- zoo::na.locf(merged$Close, fromLast = TRUE, na.rm = FALSE)
 
@@ -144,15 +142,14 @@ macro_features <- Reduce(
 )
 
 # ---------------------------------------------------------------------------
-# 3. Feature engineering (50 new features / 7 categories, + 12 macro
-#    cross-asset features merged in below)
+# 3. Feature engineering (50 new features / 7 categories, + 12 macro cross-asset features merged in below)
 # ---------------------------------------------------------------------------
 engineer_features <- function(df) {
   df <- df %>% arrange(Date)
 
   o <- df$Open; h <- df$High; l <- df$Low; c <- df$Close; v <- df$Volume
 
-  ## ---- Category 1: Market data features (0 new) -----------------------
+  ## ---- Category 1: Market data features -----------------------
   ## Satisfied directly by the raw Open/High/Low/Close/Volume columns already present in df.
 
   ## ---- Category 2: Temporal features (4) ------------------------------
@@ -290,9 +287,6 @@ treat_missing_lagged_features <- function(df) {
     x <- zoo::na.locf(x, fromLast = TRUE, na.rm = FALSE)    # cover leading NAs
     df[[cn]] <- x
   }
-  # Ensure rows with any remaining NAs (including former Inf values, and
-  # non-lag features like CO_Ratio/Amihud/etc. that had a genuine Inf on a
-  # zero-volume/zero-price day) are deleted.
   df[complete.cases(df), ]
 }
 
