@@ -1,0 +1,7 @@
+"Test","Statistic","p_value","p_value_bonferroni","p_value_BH","Conclusion_raw","Conclusion_bonferroni","Conclusion_BH"
+"Normality: Shapiro-Wilk",0.747055530144323,4.15967843376483e-66,2.4958070602589e-65,8.31935686752967e-66,"reject H0 (raw p < 0.05)","reject H0 (Bonferroni-adjusted p < 0.05)","reject H0 (BH-adjusted p < 0.05)"
+"Normality: Jarque-Bera",307810.398893421,0,0,0,"reject H0 (raw p < 0.05)","reject H0 (Bonferroni-adjusted p < 0.05)","reject H0 (BH-adjusted p < 0.05)"
+"Homoscedasticity: Breusch-Pagan",225.76716432048,4.99447741686233e-51,2.9966864501174e-50,5.9933729002348e-51,"reject H0 (raw p < 0.05)","reject H0 (Bonferroni-adjusted p < 0.05)","reject H0 (BH-adjusted p < 0.05)"
+"Homoscedasticity: White",267.924780462643,6.62023094523413e-59,3.97213856714048e-58,9.9303464178512e-59,"reject H0 (raw p < 0.05)","reject H0 (Bonferroni-adjusted p < 0.05)","reject H0 (BH-adjusted p < 0.05)"
+"Independence: Ljung-Box",1620.79822598277,0,0,0,"reject H0 (raw p < 0.05)","reject H0 (Bonferroni-adjusted p < 0.05)","reject H0 (BH-adjusted p < 0.05)"
+"Independence: Durbin-Watson",1.72497859384754,1.66715033201349e-23,1.00029019920809e-22,1.66715033201349e-23,"reject H0 (raw p < 0.05)","reject H0 (Bonferroni-adjusted p < 0.05)","reject H0 (BH-adjusted p < 0.05)"
