@@ -1,0 +1,2 @@
+"Mean_R2_Universal","Mean_R2_AssetSpecific","Mean_MAE_Universal","Mean_MAE_AssetSpecific","t_statistic","df","p_value","Conclusion"
+0.98564751336312,0.994428606018637,0.0208638969741928,0.0111285990805316,-3.54472116816849,3,0.0191172525402662,"Reject H0: universal features underperform asset-specific quantum-selected features (p < 0.05)"
